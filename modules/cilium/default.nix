@@ -1,7 +1,5 @@
 { charts, ... }:
 {
-  nixidy.target.rootPath = "./manifests/prod";
-
   applications.cilium = {
     namespace = "kube-system";
 

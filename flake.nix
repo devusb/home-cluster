@@ -42,6 +42,7 @@
           }:
           {
             treefmt = {
+              settings.global.excludes = [ "*.yaml" ];
               programs.nixfmt.enable = true;
             };
 
@@ -63,8 +64,8 @@
                 charts = nixhelm.chartsDerivations.${system};
                 envs = {
                   prod.modules = [
-                    ./modules/default.nix
-                    ./env/prod.nix
+                    ./configuration.nix
+                    ./modules
                   ];
                 };
               }
