@@ -9,6 +9,7 @@
       chart = charts.cilium.cilium;
 
       values = {
+        operator.replicas = 1;
         ipam.mode = "kubernetes";
         kubeProxyReplacement = true;
         securityContext = {
