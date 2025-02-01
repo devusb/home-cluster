@@ -4,7 +4,6 @@
 
   applications.cilium = {
     namespace = "kube-system";
-    createNamespace = true;
 
     helm.releases.cilium = {
       chart = charts.cilium.cilium;
@@ -36,7 +35,7 @@
         };
         cgroup = {
           autoMount.enabled = false;
-          hostRoot = "/sys/fs/cgoup";
+          hostRoot = "/sys/fs/cgroup";
         };
         k8sServiceHost = "localhost";
         k8sServicePort = 7445;

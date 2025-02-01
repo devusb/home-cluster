@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/part-of: cilium
     k8s-app: cilium
   name: cilium
-  namespace: cilium
+  namespace: kube-system
 spec:
   selector:
     matchLabels:
@@ -156,7 +156,7 @@ spec:
             - mountPath: /sys/fs/bpf
               mountPropagation: HostToContainer
               name: bpf-maps
-            - mountPath: /sys/fs/cgoup
+            - mountPath: /sys/fs/cgroup
               name: cilium-cgroup
             - mountPath: /var/run/cilium
               name: cilium-run
@@ -294,7 +294,7 @@ spec:
           volumeMounts:
             - mountPath: /sys/fs/bpf
               name: bpf-maps
-            - mountPath: /sys/fs/cgoup
+            - mountPath: /sys/fs/cgroup
               mountPropagation: HostToContainer
               name: cilium-cgroup
             - mountPath: /var/run/cilium
@@ -350,7 +350,7 @@ spec:
             type: Directory
           name: hostproc
         - hostPath:
-            path: /sys/fs/cgoup
+            path: /sys/fs/cgroup
             type: DirectoryOrCreate
           name: cilium-cgroup
         - hostPath:

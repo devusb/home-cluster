@@ -13,7 +13,7 @@ data:
   bpf-map-dynamic-size-ratio: "0.0025"
   bpf-policy-map-max: "16384"
   bpf-root: /sys/fs/bpf
-  cgroup-root: /sys/fs/cgoup
+  cgroup-root: /sys/fs/cgroup
   cilium-endpoint-gc-interval: 5m0s
   cluster-id: "0"
   cluster-name: default
@@ -140,4 +140,4 @@ data:
 kind: ConfigMap
 metadata:
   name: cilium-config
-  namespace: cilium
+  namespace: kube-system

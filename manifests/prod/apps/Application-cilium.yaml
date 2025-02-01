@@ -5,11 +5,14 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: cilium
+    namespace: kube-system
     server: https://kubernetes.default.svc
   project: default
   source:
     path: ./manifests/prod/cilium
     repoURL: https://github.com/devusb/argocd.git
     targetRevision: main
-  syncPolicy: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
