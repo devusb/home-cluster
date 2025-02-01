@@ -43,6 +43,8 @@
           enableAlpn = true;
           enableAppProtocol = true;
         };
+        routingMode = "native";
+        socketLB.hostNamespaceOnly = true;
       };
     };
   };
