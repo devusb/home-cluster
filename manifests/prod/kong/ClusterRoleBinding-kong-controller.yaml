@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/instance: kong
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: controller
+    app.kubernetes.io/version: "3.8"
+    helm.sh/chart: controller-2.46.0
+  name: kong-controller
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kong-controller
+subjects:
+  - kind: ServiceAccount
+    name: kong-controller
+    namespace: kong
