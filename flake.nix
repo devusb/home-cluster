@@ -71,6 +71,44 @@
               }
             ))
           );
+
+          generators = lib.genAttrs config.systems (
+            system:
+            (withSystem system (
+              { pkgs, ... }:
+              {
+                cilium = nixidy.packages.${system}.generators.fromCRD {
+                  name = "cilium";
+                  src = pkgs.fetchFromGitHub {
+                    owner = "cilium";
+                    repo = "cilium";
+                    rev = "v1.16.6";
+                    hash = "sha256-aNBKCVAWsd7n86xaR5/d2s9pYu1TRGMWYLxZ+9BYCPY=";
+                  };
+                  crds = [
+                    "pkg/k8s/apis/cilium.io/client/crds/v2/ciliumnetworkpolicies.yaml"
+                    "pkg/k8s/apis/cilium.io/client/crds/v2/ciliumclusterwidenetworkpolicies.yaml"
+                  ];
+                };
+                tailscale = nixidy.packages.${system}.generators.fromCRD {
+                  name = "tailscale";
+                  src = pkgs.fetchFromGitHub {
+                    owner = "tailscale";
+                    repo = "tailscale";
+                    rev = "v1.78.3";
+                    hash = "sha256-n2XezODpMl9ayKmY1jpyrJMeRD7kxEKdebHyyqZ5x64=";
+                  };
+                  crds = [ "cmd/k8s-operator/deploy/crds/tailscale.com_proxyclasses.yaml" ];
+                };
+                sops = nixidy.packages.${system}.generators.fromCRD {
+                  name = "sops";
+                  src = nixhelm.chartsDerivations.${system}.isindir.sops-secrets-operator;
+                  crds = [ "crds/isindir.github.com_sopssecrets.yaml" ];
+                };
+
+              }
+            ))
+          );
         };
       }
     );
