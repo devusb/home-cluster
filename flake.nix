@@ -7,6 +7,7 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     nixidy.url = "github:arnarg/nixidy";
     nixhelm.url = "github:farcaller/nixhelm";
+    talhelper.url = "github:budimanjojo/talhelper";
   };
 
   outputs =
@@ -15,6 +16,7 @@
       treefmt-nix,
       nixidy,
       nixhelm,
+      talhelper,
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
@@ -51,7 +53,10 @@
             };
 
             devShells.default = pkgs.mkShell {
-              buildInputs = [ nixidy.packages.${system}.default ];
+              buildInputs = [ 
+                nixidy.packages.${system}.default
+                talhelper.packages.${system}.default
+              ];
             };
           };
         flake = {
