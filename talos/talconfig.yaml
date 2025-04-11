@@ -1,0 +1,45 @@
+---
+clusterName: kube
+talosVersion: v1.9.2
+kubernetesVersion: v1.32.0
+endpoint: https://kube0:6443
+allowSchedulingOnMasters: true
+cniConfig:
+  name: none
+nodes:
+  - hostname: kube0
+    ipAddress: 192.168.20.102
+    controlPlane: true
+    installDisk: /dev/vda
+  - hostname: kube1
+    ipAddress: 192.168.20.103
+    controlPlane: false
+    installDisk: /dev/vda
+
+controlPlane:
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/tailscale
+  extensionServices:
+    - name: tailscale
+      environment:
+        - TS_AUTHKEY=${tsAuth}
+        - TS_ROUTES=10.96.0.0/12
+  patches:
+    - |-
+        cluster:
+          proxy:
+            disabled: true
+worker:
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/tailscale
+  extensionServices:
+    - name: tailscale
+      environment:
+        - TS_AUTHKEY=${tsAuth}
+        - TS_ROUTES=10.96.0.0/12
