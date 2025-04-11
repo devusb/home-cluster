@@ -27,6 +27,13 @@ rules:
       - get
       - list
       - watch
+      - update
+  - apiGroups:
+      - ""
+    resources:
+      - pods/status
+    verbs:
+      - update
   - apiGroups:
       - apps
     resources:
@@ -64,6 +71,7 @@ rules:
       - update
       - list
       - watch
+      - deletecollection
   - apiGroups:
       - monitoring.coreos.com
     resources:
