@@ -1,0 +1,34 @@
+apiVersion: isindir.github.com/v1alpha3
+kind: SopsSecret
+metadata:
+    name: democratic-csi-driver
+spec:
+    suspend: false
+    secretTemplates:
+        - name: democratic-csi-driver
+          stringData:
+            driver-config-file.yaml: ENC[AES256_GCM,data:Ic7aErLh+5+ryaxs1Pi0XTeg2Fjxdkj8T+53YooVY74N0tSRkdYsdCyKOmyG7SuLixt7wPoiuqc4oR3G6SQZ6E0O3e3GQ/5T2IprY1k2oJBwLbBbNmf6MAyVGFx1kIKdKkGV6/YDr8ORa8Q5p28j/9uUWRV0jsuL8vAFlL+Xa3psZY7zRKwhUt8tegeGmgVJ/TZq4RWo+nrXCtpikRwu/hvuZpPQY2m2udhZjQDTeK+ykK59m/3UbUpKrL67LdsUv3Pc4QECmjgXranhUGj7+9zSmnbhf5SkxSUQLTuRe1DJObQ2z9clleVBBEeTnWG1DF2KbVghB9Y2Ja8f8Ju1hrsWnFeuJtFBEWq9bV7LNsVVW1LWnYOvQwXSvIbWCMBobG7rKD3JnyRFqkdibiubEQzbPSX0WH6sJAN2HSwdj+MBjpBWybFB84PSYMOzlrrczqK9v7nGophIBo8B0k8b3WaJwW+fhY25Gx3V3p6S0uxSpxNEvnUJ8gYNkJulr0Z6wrQ+AN3M1Xk+16CHX9tiNWW/aKZc4y0NiaR+X2kHW//ZUPp1en0syWorjYhMYq0h0OjsszU27o7i2M+EoDCLS5m6IElbcOqmLyHryyAVtrW035Vmnqu32xGAOj4AyYIoMu7CoE68TxXHSCKHkg7K+aKWJ4YRmOGNzNWFJcefDmG2W/PfqGJ/+RBYUOjH80GTIftg1daxmP5O1d5VDZYrYwP2lTy3cJl/UZaO/I2Vy5PEKUJKjdJdY5i4y+icjXLx/eZrl3brsCis8q6/5h4XkdjmWtbxtVxlEJBR52G/ffcx/reCqdmrdaJFoFmdi7tRziHTucmVxvZ0ov1QorP6I4Ifbzn+PmS3MdDp8aQcYSF2OiRT9COl4ShTlNtO5gzXYghA/JEVWrs6kbuOdYP2rTgrLsTpep+XXfuklqTNxHtV0/AHgScb4dk8Qf7rQMBpnuxnkag/qbfmZH+Ce5oGBnTy1dOSExwDbmv+1lwNtKqtn4VXObDcTDAgkx0KfSW1WzXELdD5LqWpkgj8Du3PpYeqcYP//QsYUbtMSHsHSTUCt+6QiPd0O9b+CeGuqYY2hAxLr9dm/voH0bUieNh6kNI872eMTiRRPICP/E6iv3HRdViqAzKyo1ZT09m2HxOXhnQ5Nxc04lOzReajnKidq0oMi7pcgKyWxOZmz4gKU75R4t7GfGsfHow88C3xaZsYW43G1XY9nCK6YmkP2D66K+7tgu92uuDfUetKsa2gpeuSr+g2soeYt4ZhMYy2cTng36IL+qg+49rHC7e21JiwxoM9WckfSE/gAzgP3v9m05tCHCOl3xmxUebOvFxKOC6I6ooTs1t+/4vkiEwh18LGvS3hEUbAB1c8uQqFslcVJKiA75FSxLTbmq/nFIwPHIX6HQ7jE/etDBOxgGXEheanCQ2mL/oHOc8RIQaO9q0O3qnoon5anov4341QXUty9mQ2AwrFMFqgcWE92AhFzRNk1SPUPuCqama+LaXfdCB3Vg+JqLaeGbh99Tx/ZpLvDh886tVLgbmX1GfLshcuTPYnPh+mOiKNmCwu0EWf6mX+O1whVAchsNrC5rFDacS9R4eN9uRH9DPHah++ZIYTz3M87CpYJ7bDDdWep02iralJB/jI9L9KM5iL5Q17RIJXX4w7rSGy1U96JtjA4mVWXAWGjRW0/8uSWweIf3uB6KkS,iv:jxgmSvbu69CMNPwwag6CchW6QSNHjT0EHw8NCoBAknk=,tag:a8V8HrUTTTz4NIe811DuDA==,type:str]
+sops:
+    age:
+        - recipient: age1m97ls72xcy8v492xrru4keyjve0jcqytqne6jk62zl72j3xsqgrql0ckw2
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3eHdlMHp3MW93c014QUV1
+            UUxlTTUvelF5VlA4TC9FRlRYRWlFUkdZTUdJCmRheUZZZzNLZWs0NHZlbTNGcGU1
+            YVFtcENZUEZDVTB3d2FpbllaWXorQm8KLS0tIE82c0hsZ0R4TDVVRnMvUSszQzk5
+            a0tOUk5TdjRhRmtBQ0dCRnRIYVk2Sm8KSMBQIqYgoFkG1WQJGZ2/o3GnKY6g4QS0
+            y0JYmlnQoECJn830jfTaZUT0NV6av5P2Gx6R7jEDnunPDQK79Xew+w==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1qcn2u0r03z48ytvn9tts9pkllyj9qx7zl4w0yn6uscghv3f5y9jqmvyy69
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIVjhzUkd5VVZxUXRyeFky
+            NEM5NUJXYXJNQkRoSHJwMkw4aGk3MGtBZ0FrCmVYYi9vRndFN2R3ZkUrMzdJaWVm
+            Wjd4dDd1eFdRMzdCZS83ajF5Y1JoV2sKLS0tIHIwNnpFbnhGRHJXN1hKT2lxOE9I
+            czhtbFVJSDFRSzd5emRBc1dyY0k2eFkKUrKcQk2ObJqIem19q9DgtRcmXO6PLbSv
+            7ixx9QqS2dqKVnd/o0QE2GvxmQXxujFwar/2HsTrH6ECpS1NU5Bp8A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-04-19T21:38:10Z"
+    mac: ENC[AES256_GCM,data:MOQRL71GZvkF8U4gChO7kAWynVe+Ro+c61355nDcHE73EgGX5AjIyu3J0tg++ho7xs+eb0U7yo8VV6/l+1T6OyyQshyYaan6C2Ft0FB7UVcKZSGbm5AjJlkDyLZ8v8shbbzxiJx7zIsusO6aMya7ARo9L2O9Y8nRtmQKmCFeTOo=,iv:btg8PjU0oidrGMnQtxvgHiOFHwwyZakZqRX78nHMg90=,tag:bJkXcDAPIJQVGFIN4vjAow==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.10.2
