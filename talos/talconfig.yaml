@@ -1,8 +1,8 @@
 ---
 clusterName: kube
-talosVersion: v1.9.2
+talosVersion: v1.9.5
 kubernetesVersion: v1.32.0
-endpoint: https://kube0:6443
+endpoint: https://192.168.20.102:6443
 allowSchedulingOnMasters: true
 cniConfig:
   name: none
@@ -22,6 +22,7 @@ controlPlane:
       systemExtensions:
         officialExtensions:
           - siderolabs/tailscale
+          - siderolabs/iscsi-tools
   extensionServices:
     - name: tailscale
       environment:
@@ -38,6 +39,7 @@ worker:
       systemExtensions:
         officialExtensions:
           - siderolabs/tailscale
+          - siderolabs/iscsi-tools
   extensionServices:
     - name: tailscale
       environment:
