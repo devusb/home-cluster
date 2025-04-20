@@ -14,6 +14,9 @@
 
       values = {
         image.tag = "3.8.3";
+        podOptions = {
+          hostUsers = false;
+        };
         workload.main.podSpec.containers.main.env = {
           IGDB_CLIENT_ID.secretKeyRef = {
             expandObjectName = false;
@@ -43,6 +46,7 @@
 
     yamls = [
       (builtins.readFile ./romm-secret.sops.yaml)
+      (builtins.readFile ./ingress.yaml)
     ];
   };
 }
