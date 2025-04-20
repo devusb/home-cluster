@@ -10,7 +10,7 @@ nodes:
     controlPlane: true
     installDisk: /dev/vda
   - hostname: kube1
-    ipAddress: 192.168.20.103
+    ipAddress: 192.168.20.104
     controlPlane: false
     installDisk: /dev/vda
 
