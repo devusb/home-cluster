@@ -6,6 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     nixidy.url = "github:arnarg/nixidy";
+    nixidy.inputs.nix-kube-generators.url = "github:devusb/nix-kube-generators/oci-charts";
     nixhelm.url = "github:farcaller/nixhelm";
     talhelper.url = "github:budimanjojo/talhelper";
   };
