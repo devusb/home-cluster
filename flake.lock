@@ -190,11 +190,11 @@
     },
     "nix-kube-generators_2": {
       "locked": {
-        "lastModified": 1745180719,
+        "lastModified": 1745180768,
         "narHash": "sha256-vBfd0+Om/5bPRhTW3w6dasgLQhixWbMZpYrDNB8PAQs=",
         "owner": "devusb",
         "repo": "nix-kube-generators",
-        "rev": "b656989c35a83c3f621282ab6d74810f192c3087",
+        "rev": "b9d4fb6312633450d5566dc6f2eba0f67e83a455",
         "type": "github"
       },
       "original": {

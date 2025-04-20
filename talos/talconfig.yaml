@@ -4,8 +4,6 @@ talosVersion: v1.9.5
 kubernetesVersion: v1.32.0
 endpoint: https://192.168.20.102:6443
 allowSchedulingOnMasters: true
-cniConfig:
-  name: none
 nodes:
   - hostname: kube0
     ipAddress: 192.168.20.102
@@ -28,11 +26,7 @@ controlPlane:
       environment:
         - TS_AUTHKEY=${tsAuth}
         - TS_ROUTES=10.96.0.0/12
-  patches:
-    - |-
-        cluster:
-          proxy:
-            disabled: true
+
 worker:
   schematic:
     customization:
