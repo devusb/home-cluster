@@ -53,7 +53,7 @@
             };
 
             devShells.default = pkgs.mkShell {
-              buildInputs = [ 
+              buildInputs = [
                 nixidy.packages.${system}.default
                 talhelper.packages.${system}.default
               ];

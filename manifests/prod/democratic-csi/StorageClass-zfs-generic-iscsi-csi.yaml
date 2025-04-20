@@ -1,0 +1,27 @@
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  labels:
+    app.kubernetes.io/instance: democratic-csi
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: democratic-csi
+    helm.sh/chart: democratic-csi-0.15.0
+  name: zfs-generic-iscsi-csi
+parameters:
+  csi.storage.k8s.io/controller-expand-secret-name: controller-expand-secret-zfs-generic-iscsi-csi-democratic-csi
+  csi.storage.k8s.io/controller-expand-secret-namespace: democratic-csi
+  csi.storage.k8s.io/controller-publish-secret-name: controller-publish-secret-zfs-generic-iscsi-csi-democratic-csi
+  csi.storage.k8s.io/controller-publish-secret-namespace: democratic-csi
+  csi.storage.k8s.io/node-publish-secret-name: node-publish-secret-zfs-generic-iscsi-csi-democratic-csi
+  csi.storage.k8s.io/node-publish-secret-namespace: democratic-csi
+  csi.storage.k8s.io/node-stage-secret-name: node-stage-secret-zfs-generic-iscsi-csi-democratic-csi
+  csi.storage.k8s.io/node-stage-secret-namespace: democratic-csi
+  csi.storage.k8s.io/provisioner-secret-name: provisioner-secret-zfs-generic-iscsi-csi-democratic-csi
+  csi.storage.k8s.io/provisioner-secret-namespace: democratic-csi
+  fsType: ext4
+provisioner: org.democratic-csi.iscsi
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
