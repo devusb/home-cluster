@@ -2,7 +2,6 @@
 {
   applications.democratic-csi = {
     namespace = "democratic-csi";
-    createNamespace = true;
 
     helm.releases.democratic-csi = {
       chart = lib.helm.downloadHelmChart {
@@ -74,6 +73,7 @@
     };
 
     yamls = [
+      (builtins.readFile ./namespace.yaml)
       (builtins.readFile ./democratic-csi-driver.sops.yaml)
     ];
   };
