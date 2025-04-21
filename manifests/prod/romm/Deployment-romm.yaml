@@ -31,7 +31,7 @@ spec:
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
         checksum/redis: 1c39d3140d64da8c5d6e51f123a2bc5860e37728cf0cff528c1789b1b6f36cb1
-        checksum/secrets: 8d6a4a60e63c3b17e424d1e03c950b4f45e7973f398a66e1772e82f8100fb160
+        checksum/secrets: 05c3f0e2f7318824b14f31623d7a7c2be567fac469cfd03b85d0acb0897db075
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
@@ -57,18 +57,8 @@ spec:
               value: "0022"
             - name: NVIDIA_VISIBLE_DEVICES
               value: void
-            - name: PUID
-              value: "568"
-            - name: USER_ID
-              value: "568"
-            - name: UID
-              value: "568"
-            - name: PGID
-              value: "568"
-            - name: GROUP_ID
-              value: "568"
-            - name: GID
-              value: "568"
+            - name: S6_READ_ONLY_ROOT
+              value: "1"
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
@@ -176,19 +166,14 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              add:
-                - CHOWN
-                - SETUID
-                - SETGID
-                - FOWNER
-                - DAC_OVERRIDE
+              add: []
               drop:
                 - ALL
             privileged: false
             readOnlyRootFilesystem: false
-            runAsGroup: 0
-            runAsNonRoot: false
-            runAsUser: 0
+            runAsGroup: 1002
+            runAsNonRoot: true
+            runAsUser: 1002
             seccompProfile:
               type: RuntimeDefault
           startupProbe:

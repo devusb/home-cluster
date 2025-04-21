@@ -14,6 +14,10 @@
 
       values = {
         image.tag = "3.8.3";
+        securityContext.container = {
+          runAsUser = 1002;
+          runAsGroup = 1002;
+        };
         workload.main.podSpec.containers.main.env =
           let
             secretVars = [
