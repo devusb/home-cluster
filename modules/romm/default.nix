@@ -17,23 +17,30 @@
         podOptions = {
           hostUsers = false;
         };
-        workload.main.podSpec.containers.main.env = {
-          IGDB_CLIENT_ID.secretKeyRef = {
-            expandObjectName = false;
-            name = "romm-secrets";
-            key = "IGDB_CLIENT_ID";
+        workload.main.podSpec.containers.main.env =
+          let
+            secretVars = [
+              "IGDB_CLIENT_ID"
+              "IGDB_CLIENT_SECRET"
+              "ROMM_AUTH_SECRET_KEY"
+              "OIDC_CLIENT_ID"
+              "OIDC_CLIENT_SECRET"
+              "OIDC_PROVIDER"
+              "OIDC_REDIRECT_URI"
+              "OIDC_SERVER_APPLICATION_URL"
+            ];
+          in
+          lib.genAttrs secretVars (var: {
+            secretKeyRef = {
+              expandObjectName = false;
+              name = "romm-secrets";
+              key = var;
+            };
+          })
+          // {
+            OIDC_ENABLED = true;
+            DISABLE_CSRF_PROTECTION = true;
           };
-          IGDB_CLIENT_SECRET.secretKeyRef = {
-            expandObjectName = false;
-            name = "romm-secrets";
-            key = "IGDB_CLIENT_SECRET";
-          };
-          ROMM_AUTH_SECRET_KEY.secretKeyRef = {
-            expandObjectName = false;
-            name = "romm-secrets";
-            key = "ROMM_AUTH_SECRET_KEY";
-          };
-        };
         persistence.library = {
           enabled = true;
           mountPath = "/romm/library";
