@@ -26,6 +26,20 @@ controlPlane:
       environment:
         - TS_AUTHKEY=${tsAuth}
         - TS_ROUTES=10.96.0.0/12
+  patches:
+    - |-
+      cluster:
+        apiServer:
+          extraArgs:
+            feature-gates: UserNamespacesSupport=true,UserNamespacesPodSecurityStandards=true
+      machine:
+        sysctls:
+          user.max_user_namespaces: "11255"
+        kubelet:
+          extraConfig:
+            featureGates:
+              UserNamespacesSupport: true
+              UserNamespacesPodSecurityStandards: true
 
 worker:
   schematic:
@@ -39,3 +53,14 @@ worker:
       environment:
         - TS_AUTHKEY=${tsAuth}
         - TS_ROUTES=10.96.0.0/12
+  patches:
+    - |-
+      machine:
+        sysctls:
+          user.max_user_namespaces: "11255"
+        kubelet:
+          extraConfig:
+            featureGates:
+              UserNamespacesSupport: true
+              UserNamespacesPodSecurityStandards: true
+

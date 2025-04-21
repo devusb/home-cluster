@@ -14,9 +14,6 @@
 
       values = {
         image.tag = "3.8.3";
-        podOptions = {
-          hostUsers = false;
-        };
         workload.main.podSpec.containers.main.env =
           let
             secretVars = [
