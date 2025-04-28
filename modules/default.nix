@@ -5,5 +5,6 @@
     ./tailscale-operator
     ./democratic-csi
     ./romm
+    ./kube-prometheus-stack
   ];
 }
