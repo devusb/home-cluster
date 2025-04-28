@@ -6,6 +6,8 @@
     helm.releases.kube-prometheus-stack = {
       chart = charts.prometheus-community.kube-prometheus-stack;
 
+      includeCRDs = false;
+
       values = {
         grafana.enabled = false;
         alertmanager.enabled = false;
@@ -34,9 +36,20 @@
         };
       };
     };
+  };
+
+  applications.kube-prometheus-stack-crds = {
+    namespace = "prometheus";
+
+    helm.releases.kube-prometheus-stack-crds = {
+      chart = "${charts.prometheus-community.kube-prometheus-stack}/charts/crds";
+    };
+
+    syncPolicy.syncOptions.replace = true;
 
     yamls = [
       (builtins.readFile ./namespace.yaml)
     ];
   };
+
 }
