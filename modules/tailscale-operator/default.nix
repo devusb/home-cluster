@@ -10,6 +10,10 @@
 
     helm.releases.tailscale-operator = {
       chart = charts.tailscale.tailscale-operator;
+
+      values = {
+        apiServerProxyConfig.mode = "true";
+      };
     };
 
     yamls = [
