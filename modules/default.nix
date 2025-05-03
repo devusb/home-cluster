@@ -6,5 +6,6 @@
     ./democratic-csi
     ./romm
     ./kube-prometheus-stack
+    ./nextcloud
   ];
 }
