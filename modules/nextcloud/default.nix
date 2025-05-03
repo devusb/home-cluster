@@ -16,6 +16,9 @@
         ingress = {
           enabled = true;
           className = "tailscale";
+          annotations = {
+            "tailscale.com/funnel" = "true";
+          };
           tls = [
             { hosts = [ "nextcloud.springhare-egret.ts.net" ]; }
           ];
