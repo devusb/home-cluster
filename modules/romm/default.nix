@@ -40,7 +40,7 @@
           })
           // {
             OIDC_ENABLED = true;
-            DISABLE_CSRF_PROTECTION = true;
+            DISABLE_CSRF_PROTECTION = false;
           };
         persistence.library = {
           enabled = true;
