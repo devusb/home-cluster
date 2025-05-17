@@ -31,7 +31,7 @@ spec:
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
         checksum/redis: ca2857e178eeb9df08b9f375871804d8e8811926627ca34d005d84b365714f57
-        checksum/secrets: 07fe8e6b7472c187e790678e13351a6f2f6288bc7ecdce393db07e8a993384d4
+        checksum/secrets: de749394a448fc487713addc91fb832861da849a809b61e16cff71c53884b68c
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
@@ -73,7 +73,7 @@ spec:
             - name: DB_USER
               value: romm
             - name: DISABLE_CSRF_PROTECTION
-              value: "false"
+              value: "true"
             - name: IGDB_CLIENT_ID
               valueFrom:
                 secretKeyRef:
