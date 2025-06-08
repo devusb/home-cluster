@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: romm-10.23.0
+    app: romm-11.1.1
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: romm
-    app.kubernetes.io/version: 3.9.0
+    app.kubernetes.io/version: 3.10.0
     helm-revision: "1"
-    helm.sh/chart: romm-10.23.0
+    helm.sh/chart: romm-11.1.1
     release: romm
   name: romm
   namespace: romm
@@ -30,18 +30,18 @@ spec:
         checksum/mariadb: c5e178b2deac67ea96d2d5a3318594b07152380bb18c25e25c605825abcfc18f
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
-        checksum/redis: ca2857e178eeb9df08b9f375871804d8e8811926627ca34d005d84b365714f57
-        checksum/secrets: de749394a448fc487713addc91fb832861da849a809b61e16cff71c53884b68c
+        checksum/redis: 52cc41b24a8c1bf5a9ccab5cbdb4d9918bf5d8d54319fbf11a64ab47c58c22f2
+        checksum/secrets: 0aee437cbeea55652c8e560d851b10249bab4546ae5f6f28fb7aa77a9f37956e
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: romm-10.23.0
+        app: romm-11.1.1
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: romm
-        app.kubernetes.io/version: 3.9.0
+        app.kubernetes.io/version: 3.10.0
         helm-revision: "1"
-        helm.sh/chart: romm-10.23.0
+        helm.sh/chart: romm-11.1.1
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -129,7 +129,7 @@ spec:
               value: /romm
             - name: ROMM_HOST
               value: localhost
-          image: ghcr.io/rommapp/romm:3.9.0
+          image: ghcr.io/rommapp/romm:3.10.1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5
