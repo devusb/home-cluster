@@ -1,7 +1,7 @@
 ---
 clusterName: kube
-talosVersion: v1.9.5
-kubernetesVersion: v1.32.3
+talosVersion: v1.10.4
+kubernetesVersion: v1.33.1
 endpoint: https://192.168.20.105:6443
 allowSchedulingOnMasters: true
 nodes:

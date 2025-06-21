@@ -75,7 +75,7 @@ spec:
             - mountPath: /var/lib/kubelet
               mountPropagation: Bidirectional
               name: kubelet-dir
-            - mountPath: /usr/local/etc/iscsi
+            - mountPath: /var/iscsi
               mountPropagation: Bidirectional
               name: iscsi-dir
             - mountPath: /var/lib/iscsi
@@ -182,7 +182,7 @@ spec:
             type: Directory
           name: kubelet-dir
         - hostPath:
-            path: /usr/local/etc/iscsi
+            path: /var/iscsi
           name: iscsi-dir
         - hostPath:
             path: /var/lib/iscsi
