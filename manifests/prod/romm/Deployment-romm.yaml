@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: romm-11.1.1
+    app: romm-11.1.2
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: romm
     app.kubernetes.io/version: 3.10.0
     helm-revision: "1"
-    helm.sh/chart: romm-11.1.1
+    helm.sh/chart: romm-11.1.2
     release: romm
   name: romm
   namespace: romm
@@ -31,17 +31,17 @@ spec:
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
         checksum/redis: 52cc41b24a8c1bf5a9ccab5cbdb4d9918bf5d8d54319fbf11a64ab47c58c22f2
-        checksum/secrets: 625e6d91ff3c553c8c2679ba06a2af5ee5471a4370e71edb8eeabccc7d52caf8
+        checksum/secrets: 2f74a539c5c6ecb21750d1b963f5bb0e1b91420d5b50160dc820e57456cf7c65
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: romm-11.1.1
+        app: romm-11.1.2
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: romm
         app.kubernetes.io/version: 3.10.0
         helm-revision: "1"
-        helm.sh/chart: romm-11.1.1
+        helm.sh/chart: romm-11.1.2
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -129,7 +129,7 @@ spec:
               value: /romm
             - name: ROMM_HOST
               value: localhost
-          image: ghcr.io/rommapp/romm:3.10.1
+          image: ghcr.io/rommapp/romm:3.10.2
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5
