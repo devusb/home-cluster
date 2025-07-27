@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: redis-16.0.5
+    app: redis-17.0.9
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis
-    app.kubernetes.io/version: 8.0.2
+    app.kubernetes.io/version: 8.0.3
     helm-revision: "1"
-    helm.sh/chart: redis-16.0.5
+    helm.sh/chart: redis-17.0.9
     release: romm
   name: romm-redis
   namespace: romm
@@ -34,13 +34,13 @@ spec:
         checksum/services: 1fbe77c7cddc2e9997579990c10c46e0224ee9bc92911122de33093d0550ad9f
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: redis-16.0.5
+        app: redis-17.0.9
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: redis
-        app.kubernetes.io/version: 8.0.2
+        app.kubernetes.io/version: 8.0.3
         helm-revision: "1"
-        helm.sh/chart: redis-16.0.5
+        helm.sh/chart: redis-17.0.9
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -76,7 +76,7 @@ spec:
               value: "6379"
             - name: REDIS_REPLICATION_MODE
               value: master
-          image: public.ecr.aws/bitnami/redis:8.0.2@sha256:f004fdf18bc6f8669d53495df43e2b84a709a78bba756cb9217c3ce9df662818
+          image: public.ecr.aws/bitnami/redis:8.0.3@sha256:61cae2cd45c5fb49bc489fc5853630b1c2ee17fb534f02e79f6cf3117a9e11c0
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
@@ -107,11 +107,11 @@ spec:
             timeoutSeconds: 5
           resources:
             limits:
-              cpu: 4000m
-              memory: 8Gi
+              cpu: 1000m
+              memory: 1500Mi
             requests:
-              cpu: 10m
-              memory: 50Mi
+              cpu: 100m
+              memory: 250Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -191,10 +191,6 @@ spec:
           topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: ScheduleAnyway
       volumes:
-        - emptyDir:
-            medium: Memory
-            sizeLimit: 8Gi
-          name: devshm
         - configMap:
             defaultMode: 493
             items:
@@ -213,19 +209,23 @@ spec:
             name: romm-redis-health
             optional: false
           name: redis-health
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 1500Mi
+          name: devshm
         - emptyDir: {}
           name: shared
         - emptyDir:
             medium: Memory
-            sizeLimit: 8Gi
+            sizeLimit: 1500Mi
           name: tmp
         - emptyDir:
             medium: Memory
-            sizeLimit: 8Gi
+            sizeLimit: 1500Mi
           name: varlogs
         - emptyDir:
             medium: Memory
-            sizeLimit: 8Gi
+            sizeLimit: 1500Mi
           name: varrun
   updateStrategy:
     type: RollingUpdate

@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mariadb-15.9.0
+    app: mariadb-16.1.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: mariadb
-    app.kubernetes.io/version: 11.7.2
+    app.kubernetes.io/version: 11.8.2
     helm-revision: "1"
-    helm.sh/chart: mariadb-15.9.0
+    helm.sh/chart: mariadb-16.1.0
     release: romm
   name: romm-mariadb
   namespace: romm
@@ -35,17 +35,28 @@ spec:
         checksum/services: 3c1dd612ec74ee9e0f9d1999416f52f56037e0b49ff3a1234059de4203563ec5
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: mariadb-15.9.0
+        app: mariadb-16.1.0
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: mariadb
-        app.kubernetes.io/version: 11.7.2
+        app.kubernetes.io/version: 11.8.2
         helm-revision: "1"
-        helm.sh/chart: mariadb-15.9.0
+        helm.sh/chart: mariadb-16.1.0
         pod.lifecycle: permanent
         pod.name: main
         release: romm
+        truecharts.org/pvc: data
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: truecharts.org/pvc
+                    operator: In
+                    values:
+                      - data
+              topologyKey: kubernetes.io/hostname
       automountServiceAccountToken: false
       containers:
         - env:
@@ -79,7 +90,7 @@ spec:
               value: PLACEHOLDERROOTPASSWORD
             - name: MARIADB_USER
               value: romm
-          image: public.ecr.aws/bitnami/mariadb:11.7.2@sha256:9c22d9d32e5bd6dad703e46ac67ecded33bdca2f73fc1ad2fddf845f1d213a2d
+          image: public.ecr.aws/bitnami/mariadb:11.8.2@sha256:450dff344e2dafaf87de1356c6decc223c170bec6810b3477881364a3ccde7f2
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
@@ -110,11 +121,11 @@ spec:
             timeoutSeconds: 5
           resources:
             limits:
-              cpu: 4000m
-              memory: 8Gi
+              cpu: 1000m
+              memory: 1500Mi
             requests:
-              cpu: 10m
-              memory: 50Mi
+              cpu: 100m
+              memory: 250Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -198,13 +209,6 @@ spec:
           topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: ScheduleAnyway
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: romm-mariadb-data
-        - emptyDir:
-            medium: Memory
-            sizeLimit: 8Gi
-          name: devshm
         - configMap:
             items:
               - key: passinit.sql
@@ -212,17 +216,24 @@ spec:
             name: romm-mariadb-passinit
             optional: false
           name: passinit
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 1500Mi
+          name: devshm
         - emptyDir: {}
           name: shared
         - emptyDir:
             medium: Memory
-            sizeLimit: 8Gi
+            sizeLimit: 1500Mi
           name: tmp
         - emptyDir:
             medium: Memory
-            sizeLimit: 8Gi
+            sizeLimit: 1500Mi
           name: varlogs
         - emptyDir:
             medium: Memory
-            sizeLimit: 8Gi
+            sizeLimit: 1500Mi
           name: varrun
+        - name: data
+          persistentVolumeClaim:
+            claimName: romm-mariadb-data

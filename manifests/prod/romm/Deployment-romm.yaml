@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: romm-11.1.2
+    app: romm-12.2.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: romm
     app.kubernetes.io/version: 3.10.0
     helm-revision: "1"
-    helm.sh/chart: romm-11.1.2
+    helm.sh/chart: romm-12.2.0
     release: romm
   name: romm
   namespace: romm
@@ -27,25 +27,36 @@ spec:
       annotations:
         checksum/cnpg: 2291fc448ae81adfd860632d73e38ffc039fc25959ede77cf692f754199383ee
         checksum/configmaps: 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-        checksum/mariadb: c5e178b2deac67ea96d2d5a3318594b07152380bb18c25e25c605825abcfc18f
+        checksum/mariadb: 56f7b611ec9b4bee54d81c0cccee56dfd474397933a3040e8d85dcec6331564c
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
-        checksum/redis: 52cc41b24a8c1bf5a9ccab5cbdb4d9918bf5d8d54319fbf11a64ab47c58c22f2
-        checksum/secrets: 2f74a539c5c6ecb21750d1b963f5bb0e1b91420d5b50160dc820e57456cf7c65
+        checksum/redis: c6e342425626fae052fbec4ba628c4fc30512aa3589265a3627e9ae8b21d17c9
+        checksum/secrets: 6ad340d04a63695127ce96198cded53015c99f661f0fe594afc62c98c04a6678
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: romm-11.1.2
+        app: romm-12.2.0
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: romm
         app.kubernetes.io/version: 3.10.0
         helm-revision: "1"
-        helm.sh/chart: romm-11.1.2
+        helm.sh/chart: romm-12.2.0
         pod.lifecycle: permanent
         pod.name: main
         release: romm
+        truecharts.org/pvc: assets_config_resources
     spec:
+      affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: truecharts.org/pvc
+                    operator: In
+                    values:
+                      - assets_config_resources
+              topologyKey: kubernetes.io/hostname
       automountServiceAccountToken: false
       containers:
         - env:
@@ -129,7 +140,7 @@ spec:
               value: /romm
             - name: ROMM_HOST
               value: localhost
-          image: ghcr.io/rommapp/romm:3.10.2
+          image: ghcr.io/rommapp/romm:4.0.1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5
@@ -158,11 +169,11 @@ spec:
             timeoutSeconds: 5
           resources:
             limits:
-              cpu: 4000m
-              memory: 8Gi
+              cpu: 1000m
+              memory: 1500Mi
             requests:
-              cpu: 10m
-              memory: 50Mi
+              cpu: 100m
+              memory: 250Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -257,7 +268,7 @@ spec:
                   name: romm-mariadbcreds
             - name: MARIADB_ROOT_PASSWORD
               value: PLACEHOLDERROOTPASSWORD
-          image: tccr.io/tccr/db-wait-mariadb:v1.1.0@sha256:725f7d48022a74206ad78807560ea92ad0356c8092cc7ec756660918465b8bae
+          image: tccr.io/tccr/db-wait-mariadb:v1.1.0@sha256:e2f91d35efd33d1fe179f452405bb9e673fb56c00ed08de079ee048120776c30
           imagePullPolicy: IfNotPresent
           name: romm-system-mariadb-wait
           resources:
@@ -346,7 +357,7 @@ spec:
               value: PLACEHOLDERPASSWORD
             - name: REDIS_PORT
               value: "6379"
-          image: tccr.io/tccr/db-wait-redis:v1.1.0@sha256:11cbaee0ce92bc243071f31f4fb8bc30c2735ee34ead52cd842713c77bdf8739
+          image: tccr.io/tccr/db-wait-redis:v1.1.0@sha256:13b78f5b48d130a21ee601549c883064588c6a639d778c7a60a6cb44a03c7e77
           imagePullPolicy: IfNotPresent
           name: romm-system-redis-wait
           resources:
@@ -411,34 +422,34 @@ spec:
           topologyKey: kubernetes.io/hostname
           whenUnsatisfiable: ScheduleAnyway
       volumes:
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 1500Mi
+          name: devshm
+        - emptyDir: {}
+          name: shared
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 1500Mi
+          name: tmp
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 1500Mi
+          name: varlogs
+        - emptyDir:
+            medium: Memory
+            sizeLimit: 1500Mi
+          name: varrun
+        - name: library
+          nfs:
+            path: /r2d2_0/media/Roms
+            server: 100.117.238.67
         - name: assets
           persistentVolumeClaim:
             claimName: romm-assets
         - name: config
           persistentVolumeClaim:
             claimName: romm-config
-        - emptyDir:
-            medium: Memory
-            sizeLimit: 8Gi
-          name: devshm
-        - name: library
-          nfs:
-            path: /r2d2_0/media/Roms
-            server: 100.117.238.67
         - name: resources
           persistentVolumeClaim:
             claimName: romm-resources
-        - emptyDir: {}
-          name: shared
-        - emptyDir:
-            medium: Memory
-            sizeLimit: 8Gi
-          name: tmp
-        - emptyDir:
-            medium: Memory
-            sizeLimit: 8Gi
-          name: varlogs
-        - emptyDir:
-            medium: Memory
-            sizeLimit: 8Gi
-          name: varrun

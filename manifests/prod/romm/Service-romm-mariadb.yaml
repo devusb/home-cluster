@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: mariadb-15.9.0
+    app: mariadb-16.1.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: mariadb
-    app.kubernetes.io/version: 11.7.2
+    app.kubernetes.io/version: 11.8.2
     helm-revision: "1"
-    helm.sh/chart: mariadb-15.9.0
+    helm.sh/chart: mariadb-16.1.0
     release: romm
     service.name: main
   name: romm-mariadb

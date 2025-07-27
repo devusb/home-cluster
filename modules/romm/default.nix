@@ -8,12 +8,12 @@
       chart = lib.helm.downloadHelmChart {
         repo = "oci://tccr.io/truecharts";
         chart = "romm";
-        version = "11.1.2";
-        chartHash = "sha256-W478WSda/RE52C6aPEB34iE8eme2OcmJUBc3G7mLr2I=";
+        version = "12.2.0";
+        chartHash = "sha256-MWUvDc6oFrIB17mWxdowMkV0jV/htQPjc209vz/4EpI=";
       };
 
       values = {
-        image.tag = "3.10.2";
+        image.tag = "4.0.1";
         securityContext.container = {
           runAsUser = 1002;
           runAsGroup = 1002;
