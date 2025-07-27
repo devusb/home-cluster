@@ -41,6 +41,8 @@
           // {
             OIDC_ENABLED = true;
             DISABLE_CSRF_PROTECTION = true;
+            HASHEOUS_API_ENABLED = true;
+            PLAYMATCH_API_ENABLED = true;
           };
         persistence.library = {
           enabled = true;
