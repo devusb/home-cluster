@@ -71,13 +71,13 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app: redis-17.0.9
+    app: redis-17.10.1
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis
-    app.kubernetes.io/version: 8.0.3
+    app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: redis-17.0.9
+    helm.sh/chart: redis-17.10.1
     release: romm
   name: romm-redis-health
   namespace: romm

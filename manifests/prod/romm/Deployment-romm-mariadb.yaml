@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mariadb-16.1.0
+    app: mariadb-17.6.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: mariadb
-    app.kubernetes.io/version: 11.8.2
+    app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: mariadb-16.1.0
+    helm.sh/chart: mariadb-17.6.0
     release: romm
   name: romm-mariadb
   namespace: romm
@@ -35,13 +35,13 @@ spec:
         checksum/services: 3c1dd612ec74ee9e0f9d1999416f52f56037e0b49ff3a1234059de4203563ec5
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: mariadb-16.1.0
+        app: mariadb-17.6.0
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: mariadb
-        app.kubernetes.io/version: 11.8.2
+        app.kubernetes.io/version: latest
         helm-revision: "1"
-        helm.sh/chart: mariadb-16.1.0
+        helm.sh/chart: mariadb-17.6.0
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -90,7 +90,7 @@ spec:
               value: PLACEHOLDERROOTPASSWORD
             - name: MARIADB_USER
               value: romm
-          image: public.ecr.aws/bitnami/mariadb:11.8.2@sha256:450dff344e2dafaf87de1356c6decc223c170bec6810b3477881364a3ccde7f2
+          image: docker.io/bitnamisecure/mariadb:latest@sha256:998650bee1f1fb93cf8b72c11aa154617408c7e030dda1605fbaf2b286872ac7
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
@@ -121,11 +121,11 @@ spec:
             timeoutSeconds: 5
           resources:
             limits:
-              cpu: 1000m
-              memory: 1500Mi
+              cpu: 1500m
+              memory: 2400Mi
             requests:
-              cpu: 100m
-              memory: 250Mi
+              cpu: 75m
+              memory: 200Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -218,21 +218,21 @@ spec:
           name: passinit
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: devshm
         - emptyDir: {}
           name: shared
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: tmp
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: varlogs
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: varrun
         - name: data
           persistentVolumeClaim:

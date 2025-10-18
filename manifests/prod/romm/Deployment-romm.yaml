@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: romm-12.2.0
+    app: romm-14.12.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: romm
-    app.kubernetes.io/version: 3.10.0
+    app.kubernetes.io/version: 4.3.0
     helm-revision: "1"
-    helm.sh/chart: romm-12.2.0
+    helm.sh/chart: romm-14.12.0
     release: romm
   name: romm
   namespace: romm
@@ -27,21 +27,21 @@ spec:
       annotations:
         checksum/cnpg: 2291fc448ae81adfd860632d73e38ffc039fc25959ede77cf692f754199383ee
         checksum/configmaps: 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-        checksum/mariadb: 56f7b611ec9b4bee54d81c0cccee56dfd474397933a3040e8d85dcec6331564c
+        checksum/mariadb: 1e6118cf3eb2b788873b7eef90a63fa2182549113444bf4ebfbe8799e5a658d6
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
-        checksum/redis: c6e342425626fae052fbec4ba628c4fc30512aa3589265a3627e9ae8b21d17c9
-        checksum/secrets: d35cead226aeadf929cf09d0a889d5e5c4cfad36821ded1acb41f7094b82fde7
+        checksum/redis: daad10611a917af094066e5d66cd20324347fa9387dea4779205a5002cb8ce67
+        checksum/secrets: e058c94076dfa20fae8496700837c5e5244f28affb6cda57a3f369c49dad61a7
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: romm-12.2.0
+        app: romm-14.12.0
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: romm
-        app.kubernetes.io/version: 3.10.0
+        app.kubernetes.io/version: 4.3.0
         helm-revision: "1"
-        helm.sh/chart: romm-12.2.0
+        helm.sh/chart: romm-14.12.0
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -144,7 +144,7 @@ spec:
               value: /romm
             - name: ROMM_HOST
               value: localhost
-          image: ghcr.io/rommapp/romm:4.0.1
+          image: ghcr.io/rommapp/romm:4.3.2
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5
@@ -173,11 +173,11 @@ spec:
             timeoutSeconds: 5
           resources:
             limits:
-              cpu: 1000m
-              memory: 1500Mi
+              cpu: 1500m
+              memory: 2400Mi
             requests:
-              cpu: 100m
-              memory: 250Mi
+              cpu: 75m
+              memory: 200Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -272,7 +272,7 @@ spec:
                   name: romm-mariadbcreds
             - name: MARIADB_ROOT_PASSWORD
               value: PLACEHOLDERROOTPASSWORD
-          image: tccr.io/tccr/db-wait-mariadb:v1.1.0@sha256:e2f91d35efd33d1fe179f452405bb9e673fb56c00ed08de079ee048120776c30
+          image: oci.trueforge.org/tccr/db-wait-mariadb:v1.1.0@sha256:8614f77d546e1f03c5104cf75387eb04efa7cb1ea4557a2d51112f35c69c0905
           imagePullPolicy: IfNotPresent
           name: romm-system-mariadb-wait
           resources:
@@ -361,7 +361,7 @@ spec:
               value: PLACEHOLDERPASSWORD
             - name: REDIS_PORT
               value: "6379"
-          image: tccr.io/tccr/db-wait-redis:v1.1.0@sha256:13b78f5b48d130a21ee601549c883064588c6a639d778c7a60a6cb44a03c7e77
+          image: oci.trueforge.org/tccr/db-wait-redis:v1.1.0@sha256:ddebe75743f37c431507c51832b5961cc63aa1de61af4f5c75b7554239c8b732
           imagePullPolicy: IfNotPresent
           name: romm-system-redis-wait
           resources:
@@ -428,21 +428,21 @@ spec:
       volumes:
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: devshm
         - emptyDir: {}
           name: shared
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: tmp
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: varlogs
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: varrun
         - name: library
           nfs:

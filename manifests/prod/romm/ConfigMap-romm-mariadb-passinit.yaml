@@ -7,13 +7,13 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app: mariadb-16.1.0
+    app: mariadb-17.6.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: mariadb
-    app.kubernetes.io/version: 11.8.2
+    app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: mariadb-16.1.0
+    helm.sh/chart: mariadb-17.6.0
     release: romm
   name: romm-mariadb-passinit
   namespace: romm

@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: redis-17.0.9
+    app: redis-17.10.1
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis
-    app.kubernetes.io/version: 8.0.3
+    app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: redis-17.0.9
+    helm.sh/chart: redis-17.10.1
     release: romm
   name: romm-redis
   namespace: romm
@@ -34,13 +34,13 @@ spec:
         checksum/services: 1fbe77c7cddc2e9997579990c10c46e0224ee9bc92911122de33093d0550ad9f
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: redis-17.0.9
+        app: redis-17.10.1
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: redis
-        app.kubernetes.io/version: 8.0.3
+        app.kubernetes.io/version: latest
         helm-revision: "1"
-        helm.sh/chart: redis-17.0.9
+        helm.sh/chart: redis-17.10.1
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -76,7 +76,7 @@ spec:
               value: "6379"
             - name: REDIS_REPLICATION_MODE
               value: master
-          image: public.ecr.aws/bitnami/redis:8.0.3@sha256:61cae2cd45c5fb49bc489fc5853630b1c2ee17fb534f02e79f6cf3117a9e11c0
+          image: docker.io/bitnamisecure/redis:latest@sha256:9a5f3428a3bfcd97eb8647af7f4d0e4c6179f6f9decbd13ed66df832a72233f5
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
@@ -107,11 +107,11 @@ spec:
             timeoutSeconds: 5
           resources:
             limits:
-              cpu: 1000m
-              memory: 1500Mi
+              cpu: 1500m
+              memory: 2400Mi
             requests:
-              cpu: 100m
-              memory: 250Mi
+              cpu: 75m
+              memory: 200Mi
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -211,21 +211,21 @@ spec:
           name: redis-health
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: devshm
         - emptyDir: {}
           name: shared
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: tmp
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: varlogs
         - emptyDir:
             medium: Memory
-            sizeLimit: 1500Mi
+            sizeLimit: 2400Mi
           name: varrun
   updateStrategy:
     type: RollingUpdate
