@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: romm-14.12.0
+    app: romm-14.23.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: romm
-    app.kubernetes.io/version: 4.3.0
+    app.kubernetes.io/version: 4.4.0
     helm-revision: "1"
-    helm.sh/chart: romm-14.12.0
+    helm.sh/chart: romm-14.23.0
     release: romm
   name: romm
   namespace: romm
@@ -25,23 +25,23 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cnpg: 2291fc448ae81adfd860632d73e38ffc039fc25959ede77cf692f754199383ee
+        checksum/cnpg: fc940fff4269c53072f7039f0811133e9b83400670af014010bf50d3f13740f4
         checksum/configmaps: 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-        checksum/mariadb: 1e6118cf3eb2b788873b7eef90a63fa2182549113444bf4ebfbe8799e5a658d6
+        checksum/mariadb: 689dc46d39c1d9b7b03a50f44b3caa2418a4591fb7e8ca49010ac32de7af00fb
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
-        checksum/redis: daad10611a917af094066e5d66cd20324347fa9387dea4779205a5002cb8ce67
-        checksum/secrets: e6659caf664ec72a53dc6a6f716a6a26c86b57e9927f0c44ce830cecb2ff4595
+        checksum/redis: c020b37f03f346fb5a179a82d33af745a62f265a95a12e3660cdee8987e15c62
+        checksum/secrets: 755d6843c6d7cdaa378c0aed9ca5cd5e03dd70cad6202beedd67eecdfbb83a7e
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: romm-14.12.0
+        app: romm-14.23.0
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: romm
-        app.kubernetes.io/version: 4.3.0
+        app.kubernetes.io/version: 4.4.0
         helm-revision: "1"
-        helm.sh/chart: romm-14.12.0
+        helm.sh/chart: romm-14.23.0
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -146,7 +146,7 @@ spec:
               value: /romm
             - name: ROMM_HOST
               value: localhost
-          image: ghcr.io/rommapp/romm:4.3.2
+          image: ghcr.io/rommapp/romm:4.4.1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5

@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mariadb-17.6.0
+    app: mariadb-17.10.0
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: mariadb
     app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: mariadb-17.6.0
+    helm.sh/chart: mariadb-17.10.0
     release: romm
   name: romm-mariadb
   namespace: romm
@@ -25,7 +25,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cnpg: 2291fc448ae81adfd860632d73e38ffc039fc25959ede77cf692f754199383ee
+        checksum/cnpg: fc940fff4269c53072f7039f0811133e9b83400670af014010bf50d3f13740f4
         checksum/configmaps: 2f70d6807f093247fad96153a9c6c0d57b4aa02789e19be1b9c088c65f4e2d07
         checksum/mariadb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
@@ -35,13 +35,13 @@ spec:
         checksum/services: 3c1dd612ec74ee9e0f9d1999416f52f56037e0b49ff3a1234059de4203563ec5
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: mariadb-17.6.0
+        app: mariadb-17.10.0
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: mariadb
         app.kubernetes.io/version: latest
         helm-revision: "1"
-        helm.sh/chart: mariadb-17.6.0
+        helm.sh/chart: mariadb-17.10.0
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -90,7 +90,7 @@ spec:
               value: PLACEHOLDERROOTPASSWORD
             - name: MARIADB_USER
               value: romm
-          image: docker.io/bitnamisecure/mariadb:latest@sha256:998650bee1f1fb93cf8b72c11aa154617408c7e030dda1605fbaf2b286872ac7
+          image: docker.io/bitnamisecure/mariadb:latest@sha256:b0ebafc7b069d32ca7a22a709610cdb7dbb45e9b0cbe233dd4b4e4f4e0fc6bcc
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:

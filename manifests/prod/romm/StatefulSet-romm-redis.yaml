@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: redis-17.10.1
+    app: redis-17.13.9
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis
     app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: redis-17.10.1
+    helm.sh/chart: redis-17.13.9
     release: romm
   name: romm-redis
   namespace: romm
@@ -24,7 +24,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/cnpg: 2291fc448ae81adfd860632d73e38ffc039fc25959ede77cf692f754199383ee
+        checksum/cnpg: fc940fff4269c53072f7039f0811133e9b83400670af014010bf50d3f13740f4
         checksum/configmaps: e4ff2990e1b108efb5fc391e633d1bb258a621411ef64149c58626f3a7451ff6
         checksum/mariadb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
@@ -34,13 +34,13 @@ spec:
         checksum/services: 1fbe77c7cddc2e9997579990c10c46e0224ee9bc92911122de33093d0550ad9f
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: redis-17.10.1
+        app: redis-17.13.9
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: redis
         app.kubernetes.io/version: latest
         helm-revision: "1"
-        helm.sh/chart: redis-17.10.1
+        helm.sh/chart: redis-17.13.9
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -76,7 +76,7 @@ spec:
               value: "6379"
             - name: REDIS_REPLICATION_MODE
               value: master
-          image: docker.io/bitnamisecure/redis:latest@sha256:9a5f3428a3bfcd97eb8647af7f4d0e4c6179f6f9decbd13ed66df832a72233f5
+          image: docker.io/bitnamisecure/redis:latest@sha256:c9fe12d04ead99c483a030768aa80b3bb8a96d254bb6d02d0fb30374c53077e1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
