@@ -2,7 +2,7 @@
 clusterName: kube
 talosVersion: v1.11.3
 kubernetesVersion: v1.34.1
-endpoint: https://192.168.20.105:6443
+endpoint: https://192.168.20.102:6443
 allowSchedulingOnMasters: true
 nodes:
   - hostname: kube0
@@ -10,9 +10,9 @@ nodes:
     controlPlane: true
     installDisk: /dev/vda
   - hostname: kube1
-    ipAddress: 192.168.20.104
+    ipAddress: 192.168.20.125
     controlPlane: false
-    installDisk: /dev/vda
+    installDisk: /dev/sda
 
 controlPlane:
   schematic:
