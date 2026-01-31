@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bichon
+  namespace: argocd
+spec:
+  destination:
+    namespace: bichon
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ./manifests/prod/bichon
+    repoURL: https://github.com/devusb/argocd.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
