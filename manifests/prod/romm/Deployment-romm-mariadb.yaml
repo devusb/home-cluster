@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mariadb-17.10.0
+    app: mariadb-17.11.16
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: mariadb
     app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: mariadb-17.10.0
+    helm.sh/chart: mariadb-17.11.16
     release: romm
   name: romm-mariadb
   namespace: romm
@@ -35,13 +35,13 @@ spec:
         checksum/services: 3c1dd612ec74ee9e0f9d1999416f52f56037e0b49ff3a1234059de4203563ec5
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: mariadb-17.10.0
+        app: mariadb-17.11.16
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: mariadb
         app.kubernetes.io/version: latest
         helm-revision: "1"
-        helm.sh/chart: mariadb-17.10.0
+        helm.sh/chart: mariadb-17.11.16
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -90,7 +90,7 @@ spec:
               value: PLACEHOLDERROOTPASSWORD
             - name: MARIADB_USER
               value: romm
-          image: docker.io/bitnamisecure/mariadb:latest@sha256:b0ebafc7b069d32ca7a22a709610cdb7dbb45e9b0cbe233dd4b4e4f4e0fc6bcc
+          image: docker.io/bitnamisecure/mariadb:latest@sha256:fc61d7cc2bda19903fb29ea0cb129c20cc51447465a1476cb286e70922375dd1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:

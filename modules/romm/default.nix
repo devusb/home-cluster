@@ -6,14 +6,14 @@
 
     helm.releases.romm = {
       chart = lib.helm.downloadHelmChart {
-        repo = "oci://tccr.io/truecharts";
+        repo = "oci://oci.trueforge.org/truecharts";
         chart = "romm";
-        version = "14.23.0";
-        chartHash = "sha256-3ZvdrRNmzpd0wcAB1PnswubzSJGP8mLlEuIkkrk4IvE=";
+        version = "14.27.4";
+        chartHash = "sha256-rTs2PVFkv0otQ4BwJ3H9uewFEofoLjsFFMRe00Jqbjw=";
       };
 
       values = {
-        image.tag = "4.4.1";
+        image.tag = "4.6.1";
         securityContext.container = {
           runAsUser = 1002;
           runAsGroup = 1002;

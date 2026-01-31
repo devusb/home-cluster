@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: redis-17.13.9
+    app: redis-17.15.18
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis
     app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: redis-17.13.9
+    helm.sh/chart: redis-17.15.18
     release: romm
   name: romm-redis
   namespace: romm
@@ -34,13 +34,13 @@ spec:
         checksum/services: 1fbe77c7cddc2e9997579990c10c46e0224ee9bc92911122de33093d0550ad9f
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: redis-17.13.9
+        app: redis-17.15.18
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: redis
         app.kubernetes.io/version: latest
         helm-revision: "1"
-        helm.sh/chart: redis-17.13.9
+        helm.sh/chart: redis-17.15.18
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -76,7 +76,7 @@ spec:
               value: "6379"
             - name: REDIS_REPLICATION_MODE
               value: master
-          image: docker.io/bitnamisecure/redis:latest@sha256:c9fe12d04ead99c483a030768aa80b3bb8a96d254bb6d02d0fb30374c53077e1
+          image: docker.io/bitnamisecure/redis:latest@sha256:b2ccacecba0945e1da5c93e8e9e6c4c7af579514941224a7d80a2fc8dfb09f6c
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
