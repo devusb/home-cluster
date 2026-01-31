@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bichon
+  namespace: bichon
+  labels:
+    app: bichon
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 15630
+      protocol: TCP
+      name: http
+  selector:
+    app: bichon

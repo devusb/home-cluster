@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bichon
+  namespace: bichon
+spec:
+  defaultBackend:
+    service:
+      name: bichon
+      port:
+        name: http
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - bichon

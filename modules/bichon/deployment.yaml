@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bichon
+  namespace: bichon
+  labels:
+    app: bichon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bichon
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: bichon
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 100
+        fsGroup: 100
+      containers:
+        - name: bichon
+          image: rustmailer/bichon:latest
+          ports:
+            - containerPort: 15630
+              name: http
+          env:
+            - name: BICHON_LOG_LEVEL
+              value: "info"
+            - name: BICHON_ROOT_DIR
+              value: "/data"
+            - name: BICHON_ENCRYPT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: bichon-encrypt-password
+                  key: password
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "1000m"
+      volumes:
+        - name: data
+          nfs:
+            server: 100.117.238.67
+            path: /r2d2_0/homes/mhelton/misc/gmail_export
