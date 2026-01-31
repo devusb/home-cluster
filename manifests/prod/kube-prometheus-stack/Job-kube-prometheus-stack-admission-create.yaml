@@ -11,8 +11,8 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: kube-prometheus-stack-prometheus-operator
     app.kubernetes.io/part-of: kube-prometheus-stack
-    app.kubernetes.io/version: 78.3.1
-    chart: kube-prometheus-stack-78.3.1
+    app.kubernetes.io/version: 81.4.2
+    chart: kube-prometheus-stack-81.4.2
     heritage: Helm
     release: kube-prometheus-stack
   name: kube-prometheus-stack-admission-create
@@ -27,8 +27,8 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: kube-prometheus-stack-prometheus-operator
         app.kubernetes.io/part-of: kube-prometheus-stack
-        app.kubernetes.io/version: 78.3.1
-        chart: kube-prometheus-stack-78.3.1
+        app.kubernetes.io/version: 81.4.2
+        chart: kube-prometheus-stack-81.4.2
         heritage: Helm
         release: kube-prometheus-stack
       name: kube-prometheus-stack-admission-create
@@ -39,7 +39,7 @@ spec:
             - --host=kube-prometheus-stack-operator,kube-prometheus-stack-operator.prometheus.svc
             - --namespace=prometheus
             - --secret-name=kube-prometheus-stack-admission
-          image: registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.3
+          image: ghcr.io/jkroepke/kube-webhook-certgen:1.7.4
           imagePullPolicy: IfNotPresent
           name: create
           resources: {}
