@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: dispatcharr-data
-  namespace: dispatcharr
+  name: nodecast-data
+  namespace: nodecast
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi

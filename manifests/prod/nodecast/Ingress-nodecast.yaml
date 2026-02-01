@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dispatcharr
-  namespace: dispatcharr
+  name: nodecast
+  namespace: nodecast
 spec:
   defaultBackend:
     service:
-      name: dispatcharr
+      name: nodecast
       port:
-        name: main
+        name: http
   ingressClassName: tailscale
   tls:
     - hosts:
-        - dispatcharr
+        - nodecast

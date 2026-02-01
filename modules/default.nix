@@ -7,6 +7,6 @@
     ./romm
     ./kube-prometheus-stack
     ./bichon
-    ./dispatcharr
+    ./nodecast
   ];
 }
