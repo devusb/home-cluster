@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dispatcharr
+  namespace: dispatcharr
+spec:
+  selector:
+    matchLabels:
+      app: dispatcharr
+  template:
+    metadata:
+      labels:
+        app: dispatcharr
+    spec:
+      containers:
+        - env:
+            - name: DISPATCHARR_ENV
+              value: aio
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"
+            - name: CELERY_BROKER_URL
+              value: redis://redis:6379/0
+            - name: DISPATCHARR_LOG_LEVEL
+              value: info
+          image: ghcr.io/dispatcharr/dispatcharr:latest
+          imagePullPolicy: Always
+          name: dispatcharr
+          ports:
+            - containerPort: 9191
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /data
+              name: dispatcharr-data
+      volumes:
+        - name: dispatcharr-data
+          persistentVolumeClaim:
+            claimName: dispatcharr-data
