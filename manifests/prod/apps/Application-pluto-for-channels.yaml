@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pluto-for-channels
+  namespace: argocd
+spec:
+  destination:
+    namespace: nodecast
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ./manifests/prod/pluto-for-channels
+    repoURL: https://github.com/devusb/argocd.git
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

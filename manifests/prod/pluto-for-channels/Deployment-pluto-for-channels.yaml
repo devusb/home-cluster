@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pluto-for-channels
+  namespace: nodecast
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pluto-for-channels
+  template:
+    metadata:
+      labels:
+        app: pluto-for-channels
+    spec:
+      containers:
+        - envFrom:
+            - secretRef:
+                name: pluto-credentials
+          image: jonmaddox/pluto-for-channels:2.0.2
+          name: pluto-for-channels
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
