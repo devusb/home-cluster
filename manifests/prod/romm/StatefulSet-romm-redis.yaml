@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    app: redis-17.15.18
+    app: redis-1.0.3
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: redis
     app.kubernetes.io/version: latest
     helm-revision: "1"
-    helm.sh/chart: redis-17.15.18
+    helm.sh/chart: redis-1.0.3
     release: romm
   name: romm-redis
   namespace: romm
@@ -25,22 +25,22 @@ spec:
     metadata:
       annotations:
         checksum/cnpg: fc940fff4269c53072f7039f0811133e9b83400670af014010bf50d3f13740f4
-        checksum/configmaps: e4ff2990e1b108efb5fc391e633d1bb258a621411ef64149c58626f3a7451ff6
+        checksum/configmaps: 26dc9fc6cf7fb3273b5d89742bb322be22945d95e5f2c3c6a549e118b01f9c77
         checksum/mariadb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
-        checksum/persistence: 596e0b956bd4bdfb4d70ff2e7dde67dc31cb5475cc00cf96d97522d423c74376
+        checksum/persistence: 50e2c5991ec74cea38a0211849459de2e42525643b14a7ee85018f7bcf8bce96
         checksum/redis: 013343a028cbb3f7e08f4ba7522702dd98e52632c688641074b0b1db3df29894
         checksum/secrets: 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
         checksum/services: 1fbe77c7cddc2e9997579990c10c46e0224ee9bc92911122de33093d0550ad9f
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: redis-17.15.18
+        app: redis-1.0.3
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: redis
         app.kubernetes.io/version: latest
         helm-revision: "1"
-        helm.sh/chart: redis-17.15.18
+        helm.sh/chart: redis-1.0.3
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -69,14 +69,12 @@ spec:
             - name: GID
               value: "568"
             - name: ALLOW_EMPTY_PASSWORD
-              value: "yes"
-            - name: REDIS_PASSWORD
+              value: "no"
+            - name: VALKEY_PASSWORD
               value: PLACEHOLDERPASSWORD
-            - name: REDIS_PORT
+            - name: VALKEY_PORT
               value: "6379"
-            - name: REDIS_REPLICATION_MODE
-              value: master
-          image: docker.io/bitnamisecure/redis:latest@sha256:b2ccacecba0945e1da5c93e8e9e6c4c7af579514941224a7d80a2fc8dfb09f6c
+          image: docker.io/bitnamisecure/valkey:latest@sha256:ddde14f88afb0d0e054fca3b635304ce39701e20cc5404a7c46951e201a90588
           imagePullPolicy: IfNotPresent
           livenessProbe:
             exec:
@@ -142,14 +140,14 @@ spec:
             - mountPath: /dev/shm
               name: devshm
               readOnly: false
-            - mountPath: /health
-              name: redis-health
-              readOnly: false
             - mountPath: /shared
               name: shared
               readOnly: false
             - mountPath: /tmp
               name: tmp
+              readOnly: false
+            - mountPath: /health
+              name: valkey-health
               readOnly: false
             - mountPath: /var/logs
               name: varlogs
@@ -208,7 +206,7 @@ spec:
                 path: ping_readiness_local_and_master.sh
             name: romm-redis-health
             optional: false
-          name: redis-health
+          name: valkey-health
         - emptyDir:
             medium: Memory
             sizeLimit: 2400Mi

@@ -2,13 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: romm-14.27.4
+    app: romm-16.1.2
     app.kubernetes.io/instance: romm
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: romm
-    app.kubernetes.io/version: 4.6.0
+    app.kubernetes.io/version: 4.8.0
     helm-revision: "1"
-    helm.sh/chart: romm-14.27.4
+    helm.sh/chart: romm-16.1.2
     release: romm
   name: romm
   namespace: romm
@@ -27,21 +27,21 @@ spec:
       annotations:
         checksum/cnpg: fc940fff4269c53072f7039f0811133e9b83400670af014010bf50d3f13740f4
         checksum/configmaps: 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
-        checksum/mariadb: 582124f15391d12ea715ee4b5f4f2636d6cde2a96650d4dff21346e846d74246
+        checksum/mariadb: 900bef71820457b762f2e79e5205c34fcc22deab628e8cc80757f4758b86668f
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
-        checksum/redis: 4d1bb1dd0b5adf09a380822068e73255eb13cb1813e88ae6a4484184bb96ef41
-        checksum/secrets: 82550745319d6cdf16114e85a3908f9de784e083ecc23bb08bee43bc0b87ab76
+        checksum/redis: b36ef05605e31985783cca6dac7d7dc063bb332e9248510db045bfd5a602cfaa
+        checksum/secrets: 4c7596bd8b1768685eda8356114d349772fcfcf3c96ba9c81a4784097c482f4d
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
-        app: romm-14.27.4
+        app: romm-16.1.2
         app.kubernetes.io/instance: romm
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: romm
-        app.kubernetes.io/version: 4.6.0
+        app.kubernetes.io/version: 4.8.0
         helm-revision: "1"
-        helm.sh/chart: romm-14.27.4
+        helm.sh/chart: romm-16.1.2
         pod.lifecycle: permanent
         pod.name: main
         release: romm
@@ -146,7 +146,7 @@ spec:
               value: /romm
             - name: ROMM_HOST
               value: localhost
-          image: ghcr.io/rommapp/romm:4.6.1
+          image: ghcr.io/rommapp/romm:4.8.1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5
@@ -274,7 +274,7 @@ spec:
                   name: romm-mariadbcreds
             - name: MARIADB_ROOT_PASSWORD
               value: PLACEHOLDERROOTPASSWORD
-          image: oci.trueforge.org/containerforge/mariadb-client:1.1.0@sha256:67e74083d952ab67a31a6adbf43ef429889b9ef084a5583b0c939a892d3b1b9b
+          image: oci.trueforge.org/containerforge/mariadb-client:12.2.2@sha256:40666d961b9b2d4b658fd4bf52aedca1d2be4ba34a52c7a322fb1141220a8b05
           imagePullPolicy: IfNotPresent
           name: romm-system-mariadb-wait
           resources:
@@ -363,7 +363,7 @@ spec:
               value: PLACEHOLDERPASSWORD
             - name: REDIS_PORT
               value: "6379"
-          image: oci.trueforge.org/containerforge/valkey-tools:1.1.0@sha256:ff58ea59c54d579152516df543f0e4ae42294f05e24d7f4d54f80000085fa571
+          image: oci.trueforge.org/containerforge/valkey-tools:1.1.0@sha256:de04e7698a66351308c1e7200f9c575ae1d322e5ae56aefb295a9266821cfec5
           imagePullPolicy: IfNotPresent
           name: romm-system-redis-wait
           resources:
