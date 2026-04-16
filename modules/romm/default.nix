@@ -18,6 +18,15 @@
           runAsUser = 1002;
           runAsGroup = 1002;
         };
+        resources = {
+          requests = {
+            cpu = "500m";
+            memory = "2Gi";
+          };
+          limits = {
+            memory = "8Gi";
+          };
+        };
         workload.main.podSpec.containers.main.env =
           let
             secretVars = [
