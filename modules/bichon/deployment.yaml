@@ -23,7 +23,7 @@ spec:
         fsGroup: 100
       containers:
         - name: bichon
-          image: rustmailer/bichon:latest
+          image: rustmailer/bichon:0.3.7
           ports:
             - containerPort: 15630
               name: http

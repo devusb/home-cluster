@@ -28,7 +28,7 @@ spec:
                 secretKeyRef:
                   key: password
                   name: bichon-encrypt-password
-          image: rustmailer/bichon:latest
+          image: rustmailer/bichon:0.3.7
           name: bichon
           ports:
             - containerPort: 15630
