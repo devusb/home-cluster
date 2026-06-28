@@ -31,7 +31,7 @@ spec:
         checksum/mongodb: 09c85576cb45b1eecd1467732b11ea8fa3363b0105c465f02a6ad64991521d52
         checksum/persistence: 93f297b2dc801369910048359b61f369b9fa6ef724d690f7364d70cf9aeb0073
         checksum/redis: b36ef05605e31985783cca6dac7d7dc063bb332e9248510db045bfd5a602cfaa
-        checksum/secrets: 9e20d836eab0aeb46b118253d318eebeea66c201cb45f1646fae05da73d7ce16
+        checksum/secrets: ca430cb405693fa2cacb604123cdf0059fdfda8424b646ffbed4d3d734f64693
         checksum/services: 4b546be00d25ad56b44b4d24cbff97d9830c9d79b2a43912df4e5912c109bf16
         checksum/solr: 29c14feeaddbf7762052db593898d274941f539cee681ddc613957587686f347
       labels:
@@ -146,7 +146,7 @@ spec:
               value: /romm
             - name: ROMM_HOST
               value: localhost
-          image: ghcr.io/rommapp/romm:4.8.1
+          image: ghcr.io/rommapp/romm:4.9.2
           imagePullPolicy: IfNotPresent
           livenessProbe:
             failureThreshold: 5

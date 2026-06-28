@@ -13,7 +13,7 @@
       };
 
       values = {
-        image.tag = "4.8.1";
+        image.tag = "4.9.2";
         securityContext.container = {
           runAsUser = 1002;
           runAsGroup = 1002;
